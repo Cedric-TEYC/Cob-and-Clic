@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Contact – Cob & Clic</title>
-  <meta name="description" content="Assistance & cybersécurité locales à Grand-Quevilly. Formations, CPF, inclusion numérique.">
+  <title>Contact & réservations – Cob & Clic | Assistance & formation à Rouen</title>
+  <meta name="description" content="Contact et réservation d'intervention pour Cob & Clic. Choisissez un créneau par demi-heure, avec majoration automatique selon l'horaire et l'urgence. Secteur Rouen et alentours." />
   <meta name="robots" content="noindex, nofollow" />
   <link rel="stylesheet" href="assets/base.css" />
   <link rel="icon" href="favicon.ico" />
@@ -14,10 +14,7 @@
   <div class="container wrap">
     <a class="brand" href="index.html">
       <img src="assets/img/Logo_Cob-and-clic.png" alt="Cob & Clic" />
-      <div>
-        Cob & Clic
-        <small>by monassistantnumérique.com</small>
-      </div>
+      <div>Cob & Clic<small>by monassistantnumérique.com</small></div>
     </a>
     <nav class="nav">
       <a href="index.html">Accueil</a>
@@ -26,62 +23,78 @@
       <a href="collectivites.html">Collectivités</a>
       <a href="formations.html">Formations</a>
       <a href="tarifs.html">Tarifs</a>
-      <a class="btn" href="contact.html">Contact</a>
+      <a class="btn" href="contact.html">Contact & réservations</a>
     </nav>
   </div>
 </header>
 
-<section class="section-band section--blue">
-  <div class="container split">
-    <div>
-      <h2>Contact</h2>
-      <p class="lead">Dites-nous en plus sur votre besoin. Nous revenons vers vous rapidement.</p>
-      <form onsubmit="handleContact(event)">
-        <div class="card">
-          <label>Nom<br><input name="nom" required style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--border)"></label><br><br>
-          <label>Email<br><input name="email" type="email" required style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--border)"></label><br><br>
+<main>
+  <section class="section">
+    <div class="container">
+      <h1>Contact & réservations</h1>
+      <p class="lead">Choisissez un créneau par demi-heure. La tarification s’ajuste selon l’horaire et l’urgence. Nous confirmons systématiquement par téléphone pour optimiser la tournée.</p>
+
+      <div class="planner" id="planner">
+        <h3>Réserver un créneau</h3>
+        <div class="grid">
           <label>Profil<br>
-            <select name="profil" required style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--border)">
-              <option value="Particulier">Particulier</option>
-              <option value="Professionnel">Professionnel</option>
-              <option value="Collectivité">Collectivité</option>
+            <select name="planner_profile">
+              <option value="particulier">Particulier (70 € / h TTC)</option>
+              <option value="professionnel">Professionnel (90 € / h HT)</option>
+              <option value="collectivite">Collectivité (90 € / h HT)</option>
             </select>
-          </label><br><br>
-          <label>Message<br><textarea name="message" rows="6" required style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--border)"></textarea></label><br><br>
-          <button class="btn btn-primary" type="submit">Envoyer la demande</button>
+          </label>
+
+          <label>Date<br>
+            <input type="date" id="planner_date" />
+          </label>
+
+          <label>Heure (pas 30 min)<br>
+            <select id="planner_time"></select>
+          </label>
+
+          <label>Urgent (non planifiable)<br>
+            <input type="checkbox" name="planner_urgent" />
+          </label>
         </div>
+
+        <!-- input ISO caché utilisé par le script pour le calcul -->
+        <input type="hidden" name="planner_datetime" />
+
+        <div class="result">
+          <div class="rate" id="planner_rate">—</div>
+          <div class="notice" id="planner_note">—</div>
+        </div>
+        <p class="notice">Majoration : +25% 20h–23h · +50% 23h–06h · +25% 06h–08h · +25% en cas d’URGENCE (si non regroupable).</p>
+      </div>
+
+      <div class="divider"></div>
+
+      <h3>Nous écrire</h3>
+      <form onsubmit="handleContact(event)" class="split">
+        <label>Nom<br><input type="text" required></label>
+        <label>Email<br><input type="email" required></label>
+        <label>Téléphone<br><input type="tel" required></label>
+        <label>Votre message<br><input type="text" required></label>
+        <button class="btn btn-primary" type="submit">Envoyer</button>
       </form>
-      <p class="notice">Les informations légales (adresse, SIRET, horaires) seront ajoutées après création de la SASU.</p>
+
+      <p class="notice" style="margin-top:12px">
+        Zone d’intervention : Rouen, Grand-Quevilly, Grand-Couronne, Petit-Couronne, Oissel, Saint-Étienne-du-Rouvray,
+        Mont-Saint-Aignan, Darnétal, Barentin, Pavilly, Clères, Tôtes, Auffay (~5 km).
+      </p>
     </div>
-    <div class="card">
-      <h3>Zone d'intervention</h3>
-      <p>Grand-Quevilly (76) et alentours.</p>
-      <h3>Horaires</h3>
-      <p>À définir – sur rendez-vous.</p>
-      <h3>Email</h3>
-      <p><em>à définir</em> (ex: contact@cobandclic.fr)</p>
-    </div>
-  </div>
-</section>
+  </section>
+</main>
 
 <footer class="site-footer">
   <div class="container footer-grid">
-    <div>
-      <strong>Cob & Clic</strong><br/>
-      <span class="sub">Le bon réflexe numérique. Inclusion numérique & cybersécurité de proximité.</span><br/>
-      <span class="sub">Grand-Quevilly (76) – Intervention à domicile et sur site.</span>
-    </div>
-    <div>
-      <div><a href="mentions-legales.html">Mentions légales</a></div>
-      <div><a href="contact.html">Contact</a></div>
-      <div><a href="sitemap.xml">Sitemap</a></div>
-    </div>
-    <div class="notice">
-      <div>© Cob & Clic – Tous droits réservés.</div>
-      <div>Qualiopi / CPF via réseau M@N (à confirmer).</div>
-    </div>
+    <div><strong>Cob & Clic</strong></div>
+    <div><a href="mentions-legales.html">Mentions légales</a><br/><a href="contact.html">Contact & réservations</a></div>
+    <div class="notice">© Cob & Clic</div>
   </div>
 </footer>
+
 <script src="assets/main.js"></script>
 </body>
 </html>
