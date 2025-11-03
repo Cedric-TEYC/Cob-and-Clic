@@ -36,20 +36,20 @@ const BASE_RATE = {
 };
 
 // Majoration selon créneau horaire
-// 20:00–23:00  => +50%
+// 20:00–23:00  => +25%
 // 23:00–06:00  => +50%
 // 06:00–08:00  => +25%
 // Par défaut   => 0%
 function timeMultiplier(dateObj) {
   if (!dateObj || isNaN(dateObj.getTime())) return 0;
   const h = dateObj.getHours();
-  if (h >= 20 && h < 23) return 0.50;        // 20–23h
+  if (h >= 20 && h < 23) return 0.25;        // 20–23h
   if (h >= 23 || h < 6)  return 0.50;        // 23–6h
   if (h >= 6  && h < 8)  return 0.25;        // 6–8h
   return 0;
 }
 
-// Majoration urgence (si non planifiable / pas de regroupement possible)
+// Majoration urgence en journée
 function urgencyMultiplier(isUrgent){
   return isUrgent ? 0.25 : 0.0;
 }
