@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact – Cob & Clic</title>
+  <meta name="description" content="Assistance & cybersécurité locales à Grand-Quevilly. Formations, CPF, inclusion numérique.">
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="stylesheet" href="assets/base.css" />
+  <link rel="icon" href="favicon.ico" />
+</head>
+<body>
+<header class="site-header">
+  <div class="container wrap">
+    <a class="brand" href="index.html">
+      <img src="assets/img/Logo_Cob-and-clic.png" alt="Cob & Clic" />
+      <div>
+        Cob & Clic
+        <small>by monassistantnumérique.com</small>
+      </div>
+    </a>
+    <nav class="nav">
+      <a href="index.html">Accueil</a>
+      <a href="particuliers.html">Particuliers</a>
+      <a href="professionnels.html">Professionnels</a>
+      <a href="collectivites.html">Collectivités</a>
+      <a href="formations.html">Formations</a>
+      <a href="tarifs.html">Tarifs</a>
+      <a class="btn" href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="section-band section--blue">
+  <div class="container split">
+    <div>
+      <h2>Contact</h2>
+      <p class="lead">Dites-nous en plus sur votre besoin. Nous revenons vers vous rapidement.</p>
+      <form onsubmit="handleContact(event)">
+        <div class="card">
+          <label>Nom<br><input name="nom" required style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--border)"></label><br><br>
+          <label>Email<br><input name="email" type="email" required style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--border)"></label><br><br>
+          <label>Profil<br>
+            <select name="profil" required style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--border)">
+              <option value="Particulier">Particulier</option>
+              <option value="Professionnel">Professionnel</option>
+              <option value="Collectivité">Collectivité</option>
+            </select>
+          </label><br><br>
+          <label>Message<br><textarea name="message" rows="6" required style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--border)"></textarea></label><br><br>
+          <button class="btn btn-primary" type="submit">Envoyer la demande</button>
+        </div>
+      </form>
+      <p class="notice">Les informations légales (adresse, SIRET, horaires) seront ajoutées après création de la SASU.</p>
+    </div>
+    <div class="card">
+      <h3>Zone d'intervention</h3>
+      <p>Grand-Quevilly (76) et alentours.</p>
+      <h3>Horaires</h3>
+      <p>À définir – sur rendez-vous.</p>
+      <h3>Email</h3>
+      <p><em>à définir</em> (ex: contact@cobandclic.fr)</p>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <strong>Cob & Clic</strong><br/>
+      <span class="sub">Le bon réflexe numérique. Inclusion numérique & cybersécurité de proximité.</span><br/>
+      <span class="sub">Grand-Quevilly (76) – Intervention à domicile et sur site.</span>
+    </div>
+    <div>
+      <div><a href="mentions-legales.html">Mentions légales</a></div>
+      <div><a href="contact.html">Contact</a></div>
+      <div><a href="sitemap.xml">Sitemap</a></div>
+    </div>
+    <div class="notice">
+      <div>© Cob & Clic – Tous droits réservés.</div>
+      <div>Qualiopi / CPF via réseau M@N (à confirmer).</div>
+    </div>
+  </div>
+</footer>
+<script src="assets/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,128 @@
+
+:root{
+  --bg:#ffffff;
+  --text:#0A0F1F;
+  --muted:#5b647a;
+  --primary:#0b1b3a; /* bleu nuit */
+  --accent:#d4a017;  /* or */
+  --card:#f6f8fb;
+  --border:#e6e9f2;
+  --radius:16px;
+  --shadow:0 10px 30px rgba(10,15,31,.08);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--text);background:var(--bg);}
+a{color:var(--primary);text-decoration:none}
+img{max-width:100%;height:auto}
+.container{max-width:1180px;margin:auto;padding:0 20px}
+
+.site-header{position:sticky;top:0;z-index:40;background:#fff;border-bottom:1px solid var(--border)}
+.site-header .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:16px}
+.brand{display:flex;align-items:center;gap:12px;font-weight:700;color:var(--text)}
+.brand img{height:42px;width:auto;border-radius:12px}
+.brand small{display:block;font-size:12px;color:var(--muted);letter-spacing:.3px}
+
+.nav{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.nav a{padding:10px 14px;border-radius:999px}
+.nav a:hover{background:var(--card)}
+.nav .btn{background:var(--primary);color:#fff}
+.nav .btn:hover{box-shadow:var(--shadow)}
+
+.hero{background:linear-gradient(180deg,#fff 0%, #f9fbff 100%);padding:64px 0;border-bottom:1px solid var(--border)}
+.hero .inner{display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:center}
+.hero h1{font-size:42px;line-height:1.1;margin:0 0 16px}
+.hero p{color:var(--muted);font-size:18px;margin:0 0 22px}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 28px;padding:0;list-style:none}
+.badges li{background:#fff;border:1px solid var(--border);padding:8px 12px;border-radius:999px;color:var(--primary)}
+
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-block;padding:12px 16px;border-radius:12px;border:1px solid var(--border);font-weight:600}
+.btn-primary{background:var(--accent);border-color:var(--accent);color:#1a1302}
+.btn-ghost{background:#fff}
+.btn-outline{background:transparent;border-color:var(--primary);color:var(--primary)}
+
+.section{padding:56px 0}
+.section h2{font-size:28px;margin:0 0 12px}
+.section p.lead{color:var(--muted);max-width:740px}
+
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:22px}
+.card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow)}
+.card h3{margin:8px 0 8px}
+.card p{color:var(--muted)}
+.card .price{font-size:22px;font-weight:700;color:var(--primary);margin-top:8px}
+
+.banner{display:flex;align-items:center;gap:16px;padding:14px 16px;border-radius:14px;background:linear-gradient(90deg, rgba(212,160,23,.12), rgba(11,27,58,.04));border:1px solid var(--border)}
+.banner strong{color:var(--primary)}
+
+.split{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.kit{display:flex;flex-direction:column;gap:8px}
+.kit li{list-style:"✓ ";margin-left:18px;color:var(--muted)}
+
+.site-footer{border-top:1px solid var(--border);padding:32px 0;margin-top:40px;color:var(--muted)}
+.site-footer a{color:var(--muted)}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:18px}
+.sub{font-size:12px;color:#8a92a8;margin-top:8px}
+
+.notice{font-size:13px;color:#6a738c}
+.hero .ribbon{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px dashed var(--accent);padding:8px 12px;border-radius:999px;color:#7a5a09}
+.tagline{color:#7a5a09;font-weight:600}
+
+@media (max-width: 960px){
+  .hero .inner{grid-template-columns:1fr}
+  .cards{grid-template-columns:1fr}
+  .split{grid-template-columns:1fr}
+}
+
+
+/* ===== Colorful themes & variants ===== */
+:root{
+  --teal:#0F766E;
+  --teal-weak:#E6FFFB;
+  --indigo:#3730A3;
+  --indigo-weak:#EEF2FF;
+  --purple:#7C3AED;
+  --purple-weak:#F3E8FF;
+  --gold-weak:#FFF7E0;
+  --blue-weak:#E9F2FF;
+}
+
+/* Band sections */
+.section-band{padding:64px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.section--teal{background:linear-gradient(180deg, var(--teal-weak), #fff)}
+.section--indigo{background:linear-gradient(180deg, var(--indigo-weak), #fff)}
+.section--purple{background:linear-gradient(180deg, var(--purple-weak), #fff)}
+.section--gold{background:linear-gradient(180deg, var(--gold-weak), #fff)}
+.section--blue{background:linear-gradient(180deg, var(--blue-weak), #fff)}
+
+.accent-title{display:inline-flex;align-items:center;gap:10px}
+.accent-title:before{content:"";display:inline-block;width:12px;height:24px;border-radius:4px;background:var(--accent)}
+
+.card.teal{border-color:rgba(15,118,110,.25); background:#ffffff}
+.card.indigo{border-color:rgba(55,48,163,.25); background:#ffffff}
+.card.purple{border-color:rgba(124,58,237,.25); background:#ffffff}
+.card.gold{border-color:rgba(212,160,23,.3); background:#ffffff}
+
+.badge{display:inline-flex;background:#fff;border:1px solid var(--border);border-radius:999px;padding:6px 10px;font-size:13px;color:var(--muted)}
+.badge.teal{border-color:rgba(15,118,110,.35);color:var(--teal)}
+.badge.indigo{border-color:rgba(55,48,163,.35);color:var(--indigo)}
+.badge.purple{border-color:rgba(124,58,237,.35);color:var(--purple)}
+.badge.gold{border-color:rgba(212,160,23,.35);color:#7a5a09}
+
+.btn-teal{background:var(--teal);border-color:var(--teal);color:#fff}
+.btn-indigo{background:var(--indigo);border-color:var(--indigo);color:#fff}
+.btn-purple{background:var(--purple);border-color:var(--purple);color:#fff}
+.btn-gold{background:var(--accent);border-color:var(--accent);color:#1a1302}
+
+.wave{position:relative;overflow:hidden}
+.wave:after{content:"";position:absolute;left:0;bottom:-1px;width:100%;height:24px;background:radial-gradient(100% 24px at 50% 0, rgba(0,0,0,.08), transparent 70%);opacity:.15}
+
+/* Page headers */
+.page-hero{padding:56px 0 24px;border-bottom:1px solid var(--border)}
+.page-hero.teal{background:linear-gradient(90deg, rgba(15,118,110,.10), transparent)}
+.page-hero.indigo{background:linear-gradient(90deg, rgba(55,48,163,.10), transparent)}
+.page-hero.purple{background:linear-gradient(90deg, rgba(124,58,237,.10), transparent)}
+.page-hero.gold{background:linear-gradient(90deg, rgba(212,160,23,.12), transparent)}
+.page-hero h1{margin:0}
+.page-hero p{color:var(--muted)}
+
+.divider{height:1px;background:linear-gradient(90deg, transparent, var(--border), transparent);margin:16px 0}
