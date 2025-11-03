@@ -104,3 +104,14 @@ img{max-width:100%;height:auto;display:block}
   .nav .btn{padding:12px 12px}
   .footer-grid{grid-template-columns:1fr}
 }
+
+/* === Formulaires : textarea large et propre === */
+.split textarea{
+  width:100%;
+  min-height:140px;
+  padding:10px;
+  border-radius:10px;
+  border:1px solid var(--border);
+  font:inherit;
+  resize:vertical;
+}
