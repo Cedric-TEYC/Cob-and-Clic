@@ -3,12 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <title>Contact & réservations – Cob & Clic | Dépannage, création, inclusion & cybersécurité</title>
-  <meta name="description" content="Contact et réservation d’intervention. Choisissez un créneau par demi-heure, majoration selon l’horaire et l’urgence. Rouen & agglomération." />
+  <title>Contact & réservations – Cob & Clic | Dépannage & création de sites</title>
+  <meta name="description" content="Réservations d’intervention à l’heure (dépannage) et demande de devis pour création de site web au forfait." />
   <meta name="robots" content="noindex, nofollow" />
-
-  <link rel="canonical" href="https://cedric-teyc.github.io/Cob-and-Clic/contact.html">
   <link rel="stylesheet" href="assets/base.css" />
   <link rel="icon" href="favicon.ico" />
 </head>
@@ -19,13 +16,9 @@
       <img src="assets/img/Logo_Cob-and-clic.png" alt="Cob & Clic" />
       <div>Cob & Clic<small>by monassistantnumérique.com</small></div>
     </a>
-
-    <!-- Bouton hamburger mobile -->
     <button class="nav-toggle" aria-label="Menu" aria-controls="site-nav" aria-expanded="false">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
     </button>
-
-    <!-- Nav principale -->
     <nav class="nav" id="site-nav" aria-label="Navigation principale">
       <a href="index.html">Accueil</a>
       <a href="particuliers.html">Particuliers</a>
@@ -42,10 +35,19 @@
   <section class="section">
     <div class="container">
       <h1>Contact & réservations</h1>
-      <p class="lead">Choisissez un créneau par demi-heure. La tarification s’ajuste selon l’horaire et l’urgence. Confirmation systématique par téléphone pour optimiser la tournée.</p>
+      <p class="lead">Choisissez un créneau par demi-heure pour les interventions à l’heure (dépannage, assistance).  
+      <strong>Pour la création de site web : pas de réservation horaire — demande de devis ci-dessous.</strong></p>
 
+      <!-- Encadré demande de devis site -->
+      <div class="card" id="brief" style="margin-bottom:18px;background:#fff7e0;border-color:#efd27a">
+        <h3>Création de site web — au forfait (sur devis)</h3>
+        <p><strong>Procédure :</strong> vous nous décrivez votre besoin → appel découverte (30 min) → devis → réalisation.</p>
+        <div class="cta"><a class="btn btn-primary" href="#contact-form">Décrire mon besoin</a> <a class="btn btn-ghost" href="tarifs.html#sites">Voir les forfaits</a></div>
+      </div>
+
+      <!-- Planner (uniquement pour l'heure) -->
       <div class="planner" id="planner">
-        <h3>Réserver un créneau</h3>
+        <h3>Réserver un créneau (interventions à l’heure)</h3>
         <div class="grid">
           <label>Profil<br>
             <select name="planner_profile">
@@ -54,45 +56,27 @@
               <option value="collectivite">Collectivité (90 € / h HT)</option>
             </select>
           </label>
-
-          <label>Date<br>
-            <input type="date" id="planner_date" />
-          </label>
-
-          <label>Heure (pas 30 min)<br>
-            <select id="planner_time"></select>
-          </label>
-
-          <label>Urgent (non planifiable)<br>
-            <input type="checkbox" name="planner_urgent" />
-          </label>
+          <label>Date<br><input type="date" id="planner_date" /></label>
+          <label>Heure (pas 30 min)<br><select id="planner_time"></select></label>
+          <label>Urgent (non planifiable)<br><input type="checkbox" name="planner_urgent" /></label>
         </div>
-
         <input type="hidden" name="planner_datetime" />
-
-        <div class="result">
-          <div class="rate" id="planner_rate">—</div>
-          <div class="notice" id="planner_note">—</div>
-        </div>
+        <div class="result"><div class="rate" id="planner_rate">—</div><div class="notice" id="planner_note">—</div></div>
         <p class="notice">Majoration : +25% 20h–23h · +50% 23h–06h · +25% 06h–08h · +25% en cas d’URGENCE (si non regroupable).</p>
       </div>
 
       <div class="divider"></div>
 
-      <h3>Nous écrire</h3>
+      <h3 id="contact-form">Nous écrire</h3>
       <form onsubmit="handleContact(event)" class="split">
         <label>Nom<br><input type="text" required></label>
         <label>Email<br><input type="email" required></label>
         <label>Téléphone<br><input type="tel" required></label>
-        <label>Votre message<br><input type="text" required></label>
+        <label>Votre message (décrivez votre besoin si “création de site”)<br><input type="text" required></label>
         <button class="btn btn-primary" type="submit">Envoyer</button>
-
         <p class="notice" style="margin-top:10px;text-align:center;">
-          Vous recevrez un e-mail de confirmation dans les 24 h suivant votre demande.<br/>
-          En cas d’indisponibilité sur le créneau choisi, nous vous proposerons une alternative adaptée à votre secteur et vos contraintes horaires.
-        </p>
-        <p class="notice" style="margin-top:8px;text-align:center;">
-          Vos données ne sont utilisées que pour traiter votre demande. Aucune prospection. <a href="mentions-legales.html">En savoir plus</a>.
+          Vous recevrez un e-mail de confirmation sous 24&nbsp;h.  
+          En cas d’indisponibilité sur le créneau choisi, nous proposerons une alternative adaptée.
         </p>
       </form>
 
@@ -108,8 +92,7 @@
   <div class="container footer-grid">
     <div>
       <div><img src="assets/img/Logo_Cob-and-clic.png" alt="Cob & Clic" style="height:50px;width:auto;margin-bottom:8px;" loading="lazy"><br><strong>Cob & Clic</strong><br><span class="sub">by monassistantnumérique.com</span></div>
-      <a href="tel:+33600000000" class="sub">📞 06 00 00 00 00</a><br/>
-      <span class="sub">Dépannage, création, inclusion & cybersécurité de proximité.</span>
+      <a href="tel:+33600000000" class="sub">📞 06 00 00 00 00</a>
     </div>
     <div>
       <div><a href="mentions-legales.html">Mentions légales</a></div>
