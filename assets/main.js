@@ -3,7 +3,6 @@
   const btn = document.querySelector('.nav-toggle');
   const nav = document.getElementById('site-nav');
   if (!btn || !nav) return;
-
   function closeOnOutside(e) {
     if (!nav.contains(e.target) && !btn.contains(e.target)) {
       nav.classList.remove('open');
@@ -11,7 +10,6 @@
       document.removeEventListener('click', closeOnOutside);
     }
   }
-
   btn.addEventListener('click', () => {
     const open = nav.classList.toggle('open');
     btn.setAttribute('aria-expanded', open ? 'true' : 'false');
@@ -19,58 +17,89 @@
   });
 })();
 
-/* ====== PLANNER (créneaux 24h/24, pas 30 min) ====== */
+/* ====== PLANNER (créneaux 24/24, no past) ====== */
 (function () {
   const root = document.getElementById('planner');
-  const timeSel = document.getElementById('planner_time');
-  const dateInp = document.getElementById('planner_date');
-  if (!root || !timeSel || !dateInp) return;
+  if (!root) return;
 
   const profileSel = root.querySelector('[name="planner_profile"]');
+  const dateInp    = document.getElementById('planner_date');
+  const timeSel    = document.getElementById('planner_time');
   const urgentChk  = root.querySelector('[name="planner_urgent"]');
   const rateEl     = document.getElementById('planner_rate');
   const noteEl     = document.getElementById('planner_note');
   const hiddenIso  = root.querySelector('[name="planner_datetime"]');
 
-  // Génère toutes les demi-heures 00:00 → 23:30
-  function buildTimes() {
-    const opts = [];
-    for (let h = 0; h < 24; h++) {
-      const H = String(h).padStart(2, '0');
-      opts.push(`${H}:00`, `${H}:30`);
-    }
-    timeSel.innerHTML = opts.map(t => `<option value="${t}">${t}</option>`).join('');
+  // Helpers temps locaux
+  const pad = (n) => String(n).padStart(2, '0');
+  const todayStr = () => new Date().toISOString().split('T')[0];
+
+  function getNextHalfHour(now = new Date()) {
+    const n = new Date(now);
+    n.setSeconds(0, 0);
+    const m = n.getMinutes();
+    if (m < 30) n.setMinutes(30);
+    else { n.setMinutes(0); n.setHours(n.getHours() + 1); }
+    return n;
   }
 
-  // Sélectionne la prochaine demi-heure à partir de l’heure actuelle
-  function selectNextHalfHour() {
+  // Construit les options d'heures à partir d'une borne min incluse (Date)
+  function buildTimesForDate(dateStrVal) {
     const now = new Date();
-    const minutes = now.getMinutes();
-    const nextMinutes = minutes < 30 ? '30' : '00';
-    const nextHour = minutes < 30 ? now.getHours() : (now.getHours() + 1) % 24;
-    const val = `${String(nextHour).padStart(2, '0')}:${nextMinutes}`;
-    if ([...timeSel.options].some(o => o.value === val)) timeSel.value = val;
+    const tStr = todayStr();
+    let startH = 0, startM = 0;
+
+    if (dateStrVal === tStr) {
+      const next = getNextHalfHour(now);
+      // Si la prochaine demi-heure passe au lendemain, on force le lendemain
+      const nextDateStr = next.toISOString().split('T')[0];
+      if (nextDateStr !== tStr) {
+        const tomorrow = new Date(now); tomorrow.setDate(now.getDate() + 1);
+        dateInp.value = tomorrow.toISOString().split('T')[0];
+        startH = 0; startM = 0; // et on proposera toute la journée
+      } else {
+        startH = next.getHours(); startM = next.getMinutes();
+      }
+    }
+
+    const opts = [];
+    for (let h = startH; h < 24; h++) {
+      let minutes = (h === startH) ? (startM === 30 ? [30] : (startM === 0 ? [0, 30] : [0, 30])) : [0, 30];
+      for (const m of minutes) {
+        opts.push(`${pad(h)}:${pad(m)}`);
+      }
+    }
+    timeSel.innerHTML = opts.map(t => `<option value="${t}">${t}</option>`).join('');
+    if (opts.length) timeSel.value = opts[0];
   }
 
   function compute() {
-    const profile = profileSel.value;
-    const timeStr = timeSel.value;
-    const dateStr = dateInp.value;
-
-    if (!dateStr || !timeStr) {
+    const dateStrVal = dateInp.value;
+    const timeStrVal = timeSel.value;
+    if (!dateStrVal || !timeStrVal) {
       rateEl.textContent = '—';
       noteEl.textContent = 'Sélectionnez date et heure.';
       return;
     }
 
-    let base = (profile === 'particulier') ? 70 : 90;
-    let label = (profile === 'particulier') ? 'TTC' : 'HT';
+    // Sécurité : si l’utilisateur a réussi à garder une heure passée, on recalcule la liste
+    if (dateStrVal === todayStr()) {
+      const [hSel, mSel] = timeStrVal.split(':').map(Number);
+      const now = new Date();
+      const selected = new Date(`${dateStrVal}T${timeStrVal}:00`);
+      if (selected <= now) {
+        buildTimesForDate(dateStrVal);
+      }
+    }
 
-    const [hh, mm] = timeStr.split(':').map(Number);
-    const date = new Date(`${dateStr}T${timeStr}:00`);
-    hiddenIso.value = date.toISOString();
+    let base = (profileSel.value === 'particulier') ? 70 : 90;
+    const label = (profileSel.value === 'particulier') ? 'TTC' : 'HT';
 
-    // Majoration : 20–23 => +25%, 23–06 => +50%, 06–08 => +25%, sinon 0
+    const [hh] = timeStrVal.split(':').map(Number);
+    const chosen = new Date(`${dateStrVal}T${timeStrVal}:00`);
+    hiddenIso.value = chosen.toISOString();
+
+    // Majoration horaire
     let maj = 0;
     if (hh >= 20 && hh < 23) maj = 0.25;
     else if (hh >= 23 || hh < 6) maj = 0.50;
@@ -89,21 +118,18 @@
     noteEl.textContent = notes.join(' · ');
   }
 
-  // Init
-  buildTimes();
-  // Date par défaut = aujourd’hui
-  dateInp.value = new Date().toISOString().split('T')[0];
-  // Heure par défaut = prochaine demi-heure
-  selectNextHalfHour();
+  // Init : date min = aujourd’hui, valeur par défaut = aujourd’hui
+  const t0 = todayStr();
+  dateInp.min = t0;
+  dateInp.value = t0;
+  buildTimesForDate(dateInp.value);
   compute();
 
   // Listeners
-  root.addEventListener('change', (e) => {
-    if (e.target.matches('#planner_time,[name="planner_profile"],#planner_date,[name="planner_urgent"]')) compute();
-  });
-  root.addEventListener('input', (e) => {
-    if (e.target.matches('#planner_time,[name="planner_profile"],#planner_date,[name="planner_urgent"]')) compute();
-  });
+  dateInp.addEventListener('change', () => { buildTimesForDate(dateInp.value); compute(); });
+  timeSel.addEventListener('change', compute);
+  profileSel.addEventListener('change', compute);
+  urgentChk.addEventListener('change', compute);
 })();
 
 /* ====== FORMULAIRE (démo) ====== */
