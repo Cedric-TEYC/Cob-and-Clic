@@ -6,6 +6,7 @@
   <title>Contact & réservations – Cob & Clic | Assistance & formation à Rouen</title>
   <meta name="description" content="Contact et réservation d'intervention pour Cob & Clic. Choisissez un créneau par demi-heure, avec majoration automatique selon l'horaire et l'urgence. Secteur Rouen et alentours." />
   <meta name="robots" content="noindex, nofollow" />
+  <link rel="canonical" href="https://cedric-teyc.github.io/Cob-and-Clic/contact.html">
   <link rel="stylesheet" href="assets/base.css" />
   <link rel="icon" href="favicon.ico" />
 </head>
@@ -16,7 +17,7 @@
       <img src="assets/img/Logo_Cob-and-clic.png" alt="Cob & Clic" />
       <div>Cob & Clic<small>by monassistantnumérique.com</small></div>
     </a>
-    <nav class="nav">
+    <nav class="nav" aria-label="Navigation principale">
       <a href="index.html">Accueil</a>
       <a href="particuliers.html">Particuliers</a>
       <a href="professionnels.html">Professionnels</a>
@@ -77,9 +78,13 @@
         <label>Téléphone<br><input type="tel" required></label>
         <label>Votre message<br><input type="text" required></label>
         <button class="btn btn-primary" type="submit">Envoyer</button>
+
         <p class="notice" style="margin-top:10px; color:#333; text-align:center;">
-        Vous recevrez un e-mail de confirmation dans les 24 h suivant votre demande.<br/>
-        En cas d’indisponibilité sur le créneau choisi, nous vous proposerons une alternative adaptée à votre secteur et vos contraintes horaires.
+          Vous recevrez un e-mail de confirmation dans les 24 h suivant votre demande.<br/>
+          En cas d’indisponibilité sur le créneau choisi, nous vous proposerons une alternative adaptée à votre secteur et vos contraintes horaires.
+        </p>
+        <p class="notice" style="margin-top:8px;text-align:center;">
+          Vos données ne sont utilisées que pour traiter votre demande. Aucune prospection. <a href="mentions-legales.html">En savoir plus</a>.
         </p>
       </form>
 
@@ -93,9 +98,17 @@
 
 <footer class="site-footer">
   <div class="container footer-grid">
-    <div><strong>Cob & Clic</strong></div>
-    <div><a href="mentions-legales.html">Mentions légales</a><br/><a href="contact.html">Contact & réservations</a></div>
-    <div class="notice">© Cob & Clic</div>
+    <div>
+      <div><img src="assets/img/Logo_Cob-and-clic.png" alt="Cob & Clic" style="height:50px;margin-bottom:8px;" loading="lazy" width="512" height="512"><br><strong>Cob & Clic</strong><br><span class="sub">by monassistantnumérique.com</span></div>
+      <a href="tel:+33600000000" class="sub">📞 06 00 00 00 00</a><br/>
+      <span class="sub">Inclusion numérique & cybersécurité de proximité.</span>
+    </div>
+    <div>
+      <div><a href="mentions-legales.html">Mentions légales</a></div>
+      <div><a href="contact.html">Contact & réservations</a></div>
+      <div><a href="sitemap.xml">Sitemap</a></div>
+    </div>
+    <div class="notice">© Cob & Clic – Tous droits réservés.</div>
   </div>
 </footer>
 
