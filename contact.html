@@ -56,12 +56,25 @@
               <option value="collectivite">Collectivité (90 € / h HT)</option>
             </select>
           </label>
-          <label>Date<br><input type="date" id="planner_date" /></label>
-          <label>Heure (pas 30 min)<br><select id="planner_time"></select></label>
-          <label>Urgent (non planifiable)<br><input type="checkbox" name="planner_urgent" /></label>
+
+          <label>Date<br>
+            <input type="date" id="planner_date" />
+          </label>
+
+          <label>Heure (pas 30 min)<br>
+            <select id="planner_time"></select>
+          </label>
+
+          <label>Urgent (non planifiable)<br>
+            <input type="checkbox" name="planner_urgent" />
+          </label>
         </div>
+
         <input type="hidden" name="planner_datetime" />
-        <div class="result"><div class="rate" id="planner_rate">—</div><div class="notice" id="planner_note">—</div></div>
+        <div class="result">
+          <div class="rate" id="planner_rate">—</div>
+          <div class="notice" id="planner_note">—</div>
+        </div>
         <p class="notice">Majoration : +25% 20h–23h · +50% 23h–06h · +25% 06h–08h · +25% en cas d’URGENCE (si non regroupable).</p>
       </div>
 
@@ -72,7 +85,9 @@
         <label>Nom<br><input type="text" required></label>
         <label>Email<br><input type="email" required></label>
         <label>Téléphone<br><input type="tel" required></label>
-        <label>Votre message (décrivez votre besoin si “création de site”)<br><input type="text" required></label>
+        <label>Votre message (décrivez votre besoin si “création de site”)<br>
+          <textarea required></textarea>
+        </label>
         <button class="btn btn-primary" type="submit">Envoyer</button>
         <p class="notice" style="margin-top:10px;text-align:center;">
           Vous recevrez un e-mail de confirmation sous 24&nbsp;h.  
