@@ -11,6 +11,22 @@ function handleContact(e){
   alert("Merci ! Votre message est prêt à être envoyé. (Formulaire en mode démonstration)");
 }
 
+// ================== UTILITAIRES TEMPS ==================
+function roundToNextHalfHour(d){
+  if(!d || isNaN(d.getTime())) return null;
+  const dt = new Date(d.getTime());
+  dt.setSeconds(0,0);
+  const m = dt.getMinutes();
+  if (m === 0 || m === 30) return dt;
+  if (m < 30) { dt.setMinutes(30); }
+  else { dt.setHours(dt.getHours() + 1); dt.setMinutes(0); }
+  return dt;
+}
+function toLocalInputValue(dt){
+  const pad = n => String(n).padStart(2,'0');
+  return `${dt.getFullYear()}-${pad(dt.getMonth()+1)}-${pad(dt.getDate())}T${pad(dt.getHours())}:${pad(dt.getMinutes())}`;
+}
+
 // ============ TARIFICATION DYNAMIQUE ============
 // Règles de base (€/h)
 const BASE_RATE = {
@@ -20,10 +36,10 @@ const BASE_RATE = {
 };
 
 // Majoration selon créneau horaire
-// 20:00–23:00  => +25%
+// 20:00–23:00  => +50%
 // 23:00–06:00  => +50%
 // 06:00–08:00  => +25%
-// 08:00–20:00   => 0%
+// Par défaut   => 0%
 function timeMultiplier(dateObj) {
   if (!dateObj || isNaN(dateObj.getTime())) return 0;
   const h = dateObj.getHours();
@@ -39,11 +55,9 @@ function urgencyMultiplier(isUrgent){
 }
 
 // Calcule le tarif final à l’heure selon profil, date/heure, urgence
-function computeHourly(profile, isoDateStr, urgent){
+function computeHourly(profile, dateObj, urgent){
   const base = BASE_RATE[profile] ?? 70;
-  let dt = null;
-  try { dt = isoDateStr ? new Date(isoDateStr) : null; } catch(e){ dt = null; }
-  const mTime = timeMultiplier(dt);
+  const mTime = timeMultiplier(dateObj);
   const mUrg  = urgencyMultiplier(urgent);
   const totalMult = 1 + mTime + mUrg; // on additionne les majorations
   return Math.round(base * totalMult);
@@ -60,24 +74,35 @@ function initPricingPlanner(){
   const outRate   = root.querySelector('#planner_rate');
   const outNote   = root.querySelector('#planner_note');
 
+  // force les pas à 30 minutes côté UI
+  if (dateEl) dateEl.setAttribute('step', '1800'); // 30 min = 1800 s
+
   function refresh(){
+    // normalise/arrondit la valeur de l'input au pas 30 min
+    let dt = null;
+    if (dateEl && dateEl.value){
+      const raw = new Date(dateEl.value); // parse local
+      const rounded = roundToNextHalfHour(raw);
+      if (rounded && (!raw || rounded.getTime() !== raw.getTime())){
+        dateEl.value = toLocalInputValue(rounded);
+      }
+      dt = rounded;
+    }
+
     const profile = profileEl.value;
-    const iso = dateEl.value;
-    const urgent = urgentEl.checked;
-    const rate = computeHourly(profile, iso, urgent);
+    const urgent  = urgentEl.checked;
+    const rate    = computeHourly(profile, dt, urgent);
 
     // Affichage TTC/HT en fonction du profil
     let suffix = (profile === 'particulier') ? '€ / h TTC' : '€ / h HT';
     outRate.textContent = `${rate} ${suffix}`;
 
-    const dt = iso ? new Date(iso) : null;
     let details = [];
-    const mU = urgencyMultiplier(urgent);
-
-    if (mU > 0) details.push('+25% urgence');
+    if (urgENT = urgencyMultiplier(urgent)) { /* no-op, kept for readability */ }
+    if (urgent) details.push('+25% urgence');
     if (dt){
       const h = dt.getHours();
-      if (h >= 20 && h < 23) details.push('+25% (20h–23h)');
+      if (h >= 20 && h < 23) details.push('+50% (20h–23h)');
       else if (h >= 23 || h < 6) details.push('+50% (23h–06h)');
       else if (h >= 6 && h < 8) details.push('+25% (06h–08h)');
       else details.push('créneau standard');
@@ -87,17 +112,16 @@ function initPricingPlanner(){
     outNote.textContent = `Détail : ${details.join(' · ')}. Si planification groupée possible, la majoration “urgence” ne s’applique pas.`;
   }
 
-  ['change','input'].forEach(evt=>{
+  ['change','input','blur'].forEach(evt=>{
     profileEl.addEventListener(evt, refresh);
     dateEl.addEventListener(evt, refresh);
     urgentEl.addEventListener(evt, refresh);
   });
 
-  // Valeur par défaut = prochain créneau plein
+  // Valeur par défaut = prochain créneau demi-heure
   const now = new Date();
-  now.setMinutes(0,0,0);
-  now.setHours(now.getHours()+1);
-  dateEl.value = now.toISOString().slice(0,16);
+  const start = roundToNextHalfHour(now);
+  dateEl.value = toLocalInputValue(start);
   refresh();
 }
 
