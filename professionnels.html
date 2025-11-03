@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Professionnels – Cob & Clic</title>
-  <meta name="description" content="Assistance & cybersécurité locales à Grand-Quevilly. Formations, CPF, inclusion numérique.">
+  <title>Cybersécurité & formation TPE/PME – Rouen | Cob & Clic</title>
+  <meta name="description" content="Assistance informatique et cybersécurité pragmatique pour TPE/PME à Rouen, Grand-Quevilly, Grand-Couronne, Saint-Étienne-du-Rouvray, Barentin, Pavilly, Clères et Tôtes. Sensibilisation, diagnostic sécurité, RGPD et PSSI simplifiée." />
   <meta name="robots" content="noindex, nofollow" />
   <link rel="stylesheet" href="assets/base.css" />
   <link rel="icon" href="favicon.ico" />
@@ -14,10 +14,7 @@
   <div class="container wrap">
     <a class="brand" href="index.html">
       <img src="assets/img/Logo_Cob-and-clic.png" alt="Cob & Clic" />
-      <div>
-        Cob & Clic
-        <small>by monassistantnumérique.com</small>
-      </div>
+      <div>Cob & Clic<small>by monassistantnumérique.com</small></div>
     </a>
     <nav class="nav">
       <a href="index.html">Accueil</a>
@@ -31,49 +28,60 @@
   </div>
 </header>
 
-<section class="page-hero indigo"><div class="container"><h1>Professionnels</h1><p>Cybersécurité pragmatique pour TPE / artisans.</p></div></section>
+<section class="page-hero indigo">
+  <div class="container"><h1>Professionnels (TPE/Artisans)</h1><p>Cybersécurité pragmatique & assistance de proximité.</p></div>
+</section>
+
 <section class="section">
   <div class="container split">
     <div>
-      <h2>Professionnels (TPE / Artisans)</h2>
-      <p class="lead">Cybersécurité pragmatique & assistance de proximité pour votre activité.</p>
+      <h2>Prestations</h2>
       <ul class="kit">
         <li>Diagnostics sécurité et bonnes pratiques</li>
-        <li>Sauvegardes, antivirus pro, mots de passe / MFA</li>
+        <li>Sauvegardes, antivirus pro, MFA & gestion des mots de passe</li>
         <li>Initiation RGPD & PSSI simplifiée</li>
-        <li>Formations équipe: sensibilisation phishing & risques</li>
+        <li>Formations équipe : phishing & risques</li>
       </ul>
-      <p class="price"><strong>90 € / heure HT</strong></p>
-      <div class="cta"><a class="btn btn-primary" href="contact.html">Demander un devis</a></div>
+      <div class="badge-list">
+        <span class="badge">Rouen</span><span class="badge">Grand-Quevilly</span><span class="badge">Saint-Étienne-du-Rouvray</span>
+        <span class="badge">Grand-Couronne</span><span class="badge">Oissel</span><span class="badge">Barentin</span>
+        <span class="badge">Pavilly</span><span class="badge">Clères</span><span class="badge">Tôtes</span><span class="badge">Auffay</span>
+      </div>
+      <p class="price"><strong>90 € / h HT</strong></p>
+      <p class="notice">Majoration : +25% URGENCE · +50% 20h-23h · +50% 23h-06h · +25% 06h-08h.</p>
     </div>
-    <div class="card">
-      <h3>Ateliers & formations</h3>
-      <ul class="kit">
-        <li>Sensibilisation cybersécurité (2 h)</li>
-        <li>Protection des données & sauvegardes (2 h)</li>
-        <li>Hygiène numérique & mots de passe (2 h)</li>
-      </ul>
-      <a class="btn btn-ghost" href="formations.html">Voir les formations</a>
+
+    <div class="planner" id="planner">
+      <h3>Planifier un créneau</h3>
+      <div class="grid">
+        <label>Profil<br>
+          <select name="planner_profile">
+            <option value="particulier">Particulier</option>
+            <option value="professionnel" selected>Professionnel</option>
+            <option value="collectivite">Collectivité</option>
+          </select>
+        </label>
+        <label>Date & heure souhaitées<br>
+          <input type="datetime-local" name="planner_datetime" />
+        </label>
+        <label>Urgent (non planifiable)<br>
+          <input type="checkbox" name="planner_urgent" />
+        </label>
+      </div>
+      <div class="result">
+        <div class="rate" id="planner_rate">—</div>
+        <div class="notice" id="planner_note">—</div>
+      </div>
+      <div class="cta" style="margin-top:12px"><a class="btn btn-primary" href="contact.html">Demander ce créneau</a></div>
     </div>
   </div>
 </section>
 
 <footer class="site-footer">
   <div class="container footer-grid">
-    <div>
-      <strong>Cob & Clic</strong><br/>
-      <span class="sub">Le bon réflexe numérique. Inclusion numérique & cybersécurité de proximité.</span><br/>
-      <span class="sub">Grand-Quevilly (76) – Intervention à domicile et sur site.</span>
-    </div>
-    <div>
-      <div><a href="mentions-legales.html">Mentions légales</a></div>
-      <div><a href="contact.html">Contact</a></div>
-      <div><a href="sitemap.xml">Sitemap</a></div>
-    </div>
-    <div class="notice">
-      <div>© Cob & Clic – Tous droits réservés.</div>
-      <div>Qualiopi / CPF via réseau M@N (à confirmer).</div>
-    </div>
+    <div><strong>Cob & Clic</strong></div>
+    <div><a href="mentions-legales.html">Mentions légales</a><br/><a href="contact.html">Contact</a></div>
+    <div class="notice">© Cob & Clic</div>
   </div>
 </footer>
 <script src="assets/main.js"></script>
