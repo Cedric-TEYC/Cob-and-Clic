@@ -1,4 +1,8 @@
 User-agent: *
 Disallow: /
 
-# Site en pré-lancement : bloqué à l'indexation volontairement.
+# Site en pré-lancement : indexation bloquée volontairement.
+# Quand le site sera prêt, remplacer par :
+# User-agent: *
+# Allow: /
+# Sitemap: https://cedric-teyc.github.io/Cob-and-Clic/sitemap.xml

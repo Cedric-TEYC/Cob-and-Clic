@@ -21,8 +21,8 @@ img{max-width:100%;height:auto;display:block}
 .brand div{line-height:1.1;min-width:0}
 .brand small{display:block;font-size:12px;color:var(--muted);letter-spacing:.2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:220px}
 
-.nav{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
-.nav a{padding:10px 14px;border-radius:999px}
+.nav{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.nav a{padding:10px 12px;border-radius:999px}
 .nav a:hover{background:var(--card)}
 .nav .btn{background:var(--primary);color:#fff}
 .nav .btn:hover{box-shadow:var(--shadow)}
@@ -115,3 +115,41 @@ img{max-width:100%;height:auto;display:block}
   font:inherit;
   resize:vertical;
 }
+
+
+/* ===== AJOUTS V2 COB & CLIC ===== */
+.page-hero{
+  padding:54px 0;
+  border-bottom:1px solid var(--border);
+  background:linear-gradient(180deg,#fff 0%,#f9fbff 100%);
+}
+.page-hero h1{font-size:38px;line-height:1.12;margin:0 0 12px}
+.page-hero p{font-size:18px;color:var(--muted);max-width:820px;margin:0}
+.page-hero.teal{background:linear-gradient(180deg,var(--teal-weak),#fff)}
+.page-hero.indigo{background:linear-gradient(180deg,var(--indigo-weak),#fff)}
+.page-hero.purple{background:linear-gradient(180deg,var(--purple-weak),#fff)}
+.logo-wrap{text-align:center;margin-top:34px}
+.trust-panel{border-color:rgba(212,160,23,.38);background:linear-gradient(180deg,#fff,var(--gold-weak))}
+.kit{padding-left:18px;color:var(--muted);line-height:1.65}
+.kit li{margin:4px 0}
+.kit.compact{line-height:1.45}
+.steps{padding-left:20px;color:var(--muted);line-height:1.7}
+.price{font-size:22px;color:var(--primary)}
+.area-list{margin-top:18px}
+.cards.two{grid-template-columns:repeat(2,1fr)}
+details{border:1px solid var(--border);border-radius:12px;padding:12px 14px;background:#fff;margin:10px 0}
+details summary{font-weight:700;cursor:pointer;color:var(--primary)}
+details p{color:var(--muted);margin:10px 0 0}
+.contact-form input,.contact-form select,.contact-form textarea,
+.split input,.split select{
+  width:100%;
+  padding:10px;
+  border-radius:10px;
+  border:1px solid var(--border);
+  font:inherit;
+  background:#fff;
+}
+.contact-form label{font-size:14px;color:var(--muted)}
+.contact-form button{align-self:start}
+.checkbox-label input{width:auto;margin-top:10px}
+@media (max-width:960px){.cards.two{grid-template-columns:1fr}.page-hero h1{font-size:32px}}

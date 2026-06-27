@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://example.com/index.html</loc></url>
-  <url><loc>https://example.com/particuliers.html</loc></url>
-  <url><loc>https://example.com/professionnels.html</loc></url>
-  <url><loc>https://example.com/collectivites.html</loc></url>
-  <url><loc>https://example.com/formations.html</loc></url>
-  <url><loc>https://example.com/tarifs.html</loc></url>
-  <url><loc>https://example.com/contact.html</loc></url>
-  <url><loc>https://example.com/mentions-legales.html</loc></url>
+  <url><loc>https://cedric-teyc.github.io/Cob-and-Clic/index.html</loc></url>
+  <url><loc>https://cedric-teyc.github.io/Cob-and-Clic/particuliers.html</loc></url>
+  <url><loc>https://cedric-teyc.github.io/Cob-and-Clic/professionnels.html</loc></url>
+  <url><loc>https://cedric-teyc.github.io/Cob-and-Clic/collectivites.html</loc></url>
+  <url><loc>https://cedric-teyc.github.io/Cob-and-Clic/formations.html</loc></url>
+  <url><loc>https://cedric-teyc.github.io/Cob-and-Clic/tarifs.html</loc></url>
+  <url><loc>https://cedric-teyc.github.io/Cob-and-Clic/contact.html</loc></url>
+  <url><loc>https://cedric-teyc.github.io/Cob-and-Clic/mentions-legales.html</loc></url>
 </urlset>
